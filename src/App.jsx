@@ -372,7 +372,7 @@ export default function App() {
             <p className="text-xs uppercase tracking-widest font-bold mt-1 group-hover:underline">Direct Line: +91-7044222721</p>
           </a>
 
-          <a href="https://linkedin.com/in/ipshita-das" target="_blank" rel="noopener noreferrer" className="col-span-1 border-4 border-(--text-color) p-6 flex flex-col justify-between hover:bg-(--text-color) hover:text-(--bg-color) transition-colors duration-300 group">
+          <a href="https://www.linkedin.com/in/ipshita-das-772479265/" target="_blank" rel="noopener noreferrer" className="col-span-1 border-4 border-(--text-color) p-6 flex flex-col justify-between hover:bg-(--text-color) hover:text-(--bg-color) transition-colors duration-300 group">
             <div>
               <h3 className="text-xl font-black uppercase mb-2 text-(--accent-red) group-hover:text-(--bg-color)">Available For A Discussion</h3>
               <p className="text-xs font-serif opacity-90">Let us discuss intelligent systems, full-stack builds, and scalable logic.</p>
