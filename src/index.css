@@ -1,0 +1,83 @@
+@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;600&display=swap');
+
+:root {
+  /* THE MORNING EDITION (Light Mode) */
+  --bg-color: #f5f3eb; 
+  --text-color: #1c1a17;
+  --accent-red: #8b3a3a; 
+  --img-filter: grayscale(100%) contrast(115%);
+}
+
+.night-edition {
+  /* THE NOIR EDITION (High-Fashion Cinematic Dark Mode) */
+  --bg-color: #0a0a0a; /* Sleek, pitch onyx black */
+  --text-color: #e8e8e8; /* Crisp silver-white ink for sharp readability */
+  --accent-red: #871818; /* A striking, vivid editorial crimson */
+  --img-filter: grayscale(100%) contrast(140%) brightness(85%); /* High-contrast film noir photography */
+}
+
+body {
+  background-color: var(--bg-color);
+  background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  /* Smooth fade for the background and text */
+  transition: background-color 0.8s ease, color 0.8s ease; 
+}
+
+/* CORRECTED TARGETING: Stripping away the texture for a pure Noir aesthetic */
+body.night-edition {
+  background-image: none;
+}
+
+h1, h2, h3, h4, .editorial-font {
+  font-family: 'Playfair Display', serif;
+}
+
+.drop-cap::first-letter {
+  font-family: 'Playfair Display', serif;
+  font-size: 6rem;
+  font-weight: 900;
+  float: left;
+  line-height: 0.85;
+  padding-right: 0.75rem;
+  padding-top: 0.3rem;
+  color: var(--text-color);
+  transition: color 0.8s ease;
+}
+
+.star-divider {
+  text-align: center;
+  letter-spacing: 0.5em;
+  color: var(--accent-red);
+  font-size: 0.8rem;
+  margin: 1.5rem 0;
+  transition: color 0.8s ease;
+}
+
+.star-divider::before {
+  content: '★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★';
+}
+
+/* Cinematic Hollow Text - Per Letter Effect */
+.hollow-text-hover {
+  transition: all 0.3s ease-in-out;
+  -webkit-text-stroke: 0px var(--text-color); 
+}
+
+.hollow-text-hover:hover {
+  color: transparent; 
+  -webkit-text-stroke: 2px var(--text-color); 
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text-color);
+}
