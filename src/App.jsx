@@ -19,10 +19,12 @@ const achievements = [
 ];
 
 const certifications = [
-  { id: 1, title: "Google AI", issuer: "Google", year: "2026", image: "/images/google-ai.jpg" },
-  { id: 2, title: "Foundations of Data Science", issuer: "Google", year: "2026", image: "/images/data-science.jpg" },
-  { id: 3, title: "Transforming Business with AI Agents", issuer: "PMI", year: "2025", image: "/images/pmi-ai.jpg" },
-  { id: 4, title: "Cyber Security Fundamentals", issuer: "University of London", year: "2025", image: "/images/cyber-sec.jpg" }
+  { id: 1, title: "AI Tools & Claude Workshop", issuer: "be10X", year: "2026", image: "/images/be10x-ai-tools.jpg" },
+  { id: 2, title: "Strategic Planning in the AI Age", issuer: "HP LIFE · HP Foundation", year: "2026", image: "/images/hp-strategic-planning.jpg" },
+  { id: 3, title: "Google AI", issuer: "Google", year: "2026", image: "/images/google-ai.jpg" },
+  { id: 4, title: "Foundations of Data Science", issuer: "Google", year: "2026", image: "/images/data-science.jpg" },
+  { id: 5, title: "Transforming Business with AI Agents", issuer: "PMI", year: "2025", image: "/images/pmi-ai.jpg" },
+  { id: 6, title: "Cyber Security Fundamentals", issuer: "University of London", year: "2025", image: "/images/cyber-sec.jpg" }
 ];
 
 const publications = [
