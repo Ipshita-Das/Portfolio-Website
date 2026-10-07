@@ -1,50 +1,69 @@
 @import 'tailwindcss';
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;600&display=swap');
 
 :root {
   /* THE MORNING EDITION (Light Mode) */
-  --bg-color: #f5f3eb; 
+  --bg-color: #f5f3eb;
   --text-color: #1c1a17;
-  --accent-red: #8b3a3a; 
+  --muted-color: rgba(28, 26, 23, 0.62);
+  --rule-color: rgba(28, 26, 23, 0.28);
+  --accent-red: #8b3a3a;
   --img-filter: grayscale(100%) contrast(115%);
+  --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.22 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .night-edition {
   /* THE NOIR EDITION (High-Fashion Cinematic Dark Mode) */
-  --bg-color: #0a0a0a; /* Sleek, pitch onyx black */
-  --text-color: #e8e8e8; /* Crisp silver-white ink for sharp readability */
-  --accent-red: #871818; /* A striking, vivid editorial crimson */
-  --img-filter: grayscale(100%) contrast(140%) brightness(85%); /* High-contrast film noir photography */
+  --bg-color: #0a0a0a;
+  --text-color: #e8e8e8;
+  --muted-color: rgba(232, 232, 232, 0.6);
+  --rule-color: rgba(232, 232, 232, 0.22);
+  --accent-red: #c23b3b;
+  --img-filter: grayscale(100%) contrast(140%) brightness(85%);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 1.5rem;
 }
 
 body {
   background-color: var(--bg-color);
-  background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+  background-image: var(--paper-grain);
   color: var(--text-color);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   overflow-x: hidden;
-  /* Smooth fade for the background and text */
-  transition: background-color 0.8s ease, color 0.8s ease; 
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.8s ease, color 0.8s ease;
 }
 
-/* CORRECTED TARGETING: Stripping away the texture for a pure Noir aesthetic */
+/* Pure Noir: no paper grain */
 body.night-edition {
   background-image: none;
 }
 
+::selection {
+  background: var(--accent-red);
+  color: var(--bg-color);
+}
+
 h1, h2, h3, h4, .editorial-font {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-red);
+  outline-offset: 3px;
 }
 
 .drop-cap::first-letter {
   font-family: 'Playfair Display', serif;
-  font-size: 6rem;
+  font-size: 5.25rem;
   font-weight: 900;
   float: left;
   line-height: 0.85;
-  padding-right: 0.75rem;
-  padding-top: 0.3rem;
-  color: var(--text-color);
+  padding-right: 0.6rem;
+  padding-top: 0.35rem;
+  color: var(--accent-red);
   transition: color 0.8s ease;
 }
 
@@ -54,6 +73,7 @@ h1, h2, h3, h4, .editorial-font {
   color: var(--accent-red);
   font-size: 0.8rem;
   margin: 1.5rem 0;
+  white-space: nowrap;
   transition: color 0.8s ease;
 }
 
@@ -64,12 +84,41 @@ h1, h2, h3, h4, .editorial-font {
 /* Cinematic Hollow Text - Per Letter Effect */
 .hollow-text-hover {
   transition: all 0.3s ease-in-out;
-  -webkit-text-stroke: 0px var(--text-color); 
+  -webkit-text-stroke: 0px var(--text-color);
 }
 
 .hollow-text-hover:hover {
-  color: transparent; 
-  -webkit-text-stroke: 2px var(--text-color); 
+  color: transparent;
+  -webkit-text-stroke: 2px var(--text-color);
+}
+
+/* Photos print in monochrome until hovered (touch screens always see colour) */
+.filtered-img {
+  transition: filter 0.5s ease, transform 0.5s ease;
+}
+@media (hover: hover) {
+  .filtered-img { filter: var(--img-filter); }
+  .group:hover .filtered-img,
+  .group:focus-visible .filtered-img {
+    filter: none;
+  }
+}
+
+/* Seamless ticker: content is rendered twice, so -50% loops perfectly */
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.ticker-track {
+  animation: ticker 40s linear infinite;
+}
+.ticker:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ticker-track { animation: none; }
 }
 
 ::-webkit-scrollbar {
